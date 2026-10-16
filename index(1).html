@@ -1,0 +1,1093 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>ForestsForFuture</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="ForestsForFuture is developing a Paulownia timber plantation in central Spain: European wood and measurable CO₂ storage. Get in touch to learn more.">
+<style>
+/* Layout concept: a plantation ledger. Long-form story in a 12-column grid,
+   numbers set in mono like field-book entries, growth rings as the one motif. */
+:root {
+  --bg: oklch(0.975 0.006 85);        /* bone paper */
+  --surface: oklch(0.935 0.02 78);    /* sand */
+  --card: oklch(0.99 0.004 85);
+  --line: oklch(0.86 0.015 75);       /* stone */
+  --ink: oklch(0.24 0.035 158);       /* pine */
+  --ink-soft: oklch(0.45 0.045 55);   /* clay, darkened for body contrast */
+  --accent: oklch(0.6 0.1 75);        /* gold */
+  --link: oklch(0.42 0.07 152);       /* forest/moss */
+  --band: oklch(0.24 0.035 158);      /* dark pine band */
+  --band-ink: oklch(0.96 0.008 85);
+  --band-soft: oklch(0.8 0.04 145);   /* sage */
+  --band-line: oklch(0.36 0.04 155);
+  --on-image: oklch(0.98 0.005 85);
+  --scrim: oklch(0.2 0.03 158 / 0.72);
+  --focus: oklch(0.6 0.1 75);
+
+  --f-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --f-body: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: ui-monospace, "SF Mono", Menlo, "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --s-1: 0.8125rem;
+  --s0: 1.0625rem;
+  --s1: 1.25rem;
+  --s2: 1.625rem;
+  --s3: clamp(1.9rem, 3.4vw, 2.6rem);
+  --s4: clamp(2.3rem, 5vw, 3.6rem);
+  --s5: clamp(2.6rem, 6.6vw, 4.9rem);
+
+  --gutter: clamp(16px, 4vw, 44px);
+  --section: clamp(4rem, 9vw, 7.5rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: oklch(0.19 0.025 158);
+    --surface: oklch(0.23 0.03 158);
+    --card: oklch(0.25 0.03 158);
+    --line: oklch(0.34 0.03 155);
+    --ink: oklch(0.95 0.01 85);
+    --ink-soft: oklch(0.8 0.02 85);
+    --accent: oklch(0.78 0.1 78);
+    --link: oklch(0.82 0.07 145);
+    --band: oklch(0.14 0.02 158);
+    --band-ink: oklch(0.95 0.01 85);
+    --band-soft: oklch(0.8 0.05 145);
+    --band-line: oklch(0.3 0.03 155);
+    --scrim: oklch(0.12 0.02 158 / 0.75);
+    --focus: oklch(0.78 0.1 78);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: oklch(0.19 0.025 158);
+  --surface: oklch(0.23 0.03 158);
+  --card: oklch(0.25 0.03 158);
+  --line: oklch(0.34 0.03 155);
+  --ink: oklch(0.95 0.01 85);
+  --ink-soft: oklch(0.8 0.02 85);
+  --accent: oklch(0.78 0.1 78);
+  --link: oklch(0.82 0.07 145);
+  --band: oklch(0.14 0.02 158);
+  --band-ink: oklch(0.95 0.01 85);
+  --band-soft: oklch(0.8 0.05 145);
+  --band-line: oklch(0.3 0.03 155);
+  --scrim: oklch(0.12 0.02 158 / 0.75);
+  --focus: oklch(0.78 0.1 78);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: var(--s0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+h1, h2, h3, h4 { font-family: var(--f-display); font-weight: 500; line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+sup { font-family: var(--f-mono); font-size: 0.68em; line-height: 0; }
+sup a { text-decoration: none; padding-inline: 1px; }
+
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: var(--section); }
+.eyebrow {
+  font-family: var(--f-mono); font-size: var(--s-1); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-soft); display: flex; align-items: center; gap: 0.6rem;
+}
+.eyebrow::before { content: ""; width: 1.6rem; height: 1px; background: currentColor; opacity: 0.6; }
+.lede { font-size: var(--s1); color: var(--ink-soft); max-width: 40rem; line-height: 1.55; }
+.prose { max-width: 38rem; color: var(--ink-soft); display: grid; gap: 1rem; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.35rem;
+  font: 500 0.95rem/1 var(--f-body); text-decoration: none; border: 1px solid var(--ink);
+  background: var(--ink); color: var(--bg); border-radius: 3px; transition: background .2s, color .2s;
+}
+.btn:hover { background: transparent; color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--bg); }
+.btn.light { background: var(--on-image); border-color: var(--on-image); color: oklch(0.24 0.035 158); }
+.btn.light:hover { background: transparent; color: var(--on-image); }
+.btn.light.ghost { background: transparent; color: var(--on-image); }
+.btn.light.ghost:hover { background: var(--on-image); color: oklch(0.24 0.035 158); }
+.btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ---------- Header ---------- */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in oklab, var(--bg) 92%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); font-family: var(--f-display); font-size: 1.2rem; font-weight: 500; }
+.brand svg { color: var(--accent); flex: none; }
+.nav { display: flex; align-items: center; gap: 1.4rem; }
+.nav a { color: var(--ink); text-decoration: none; font-size: 0.92rem; }
+.nav a:hover { color: var(--link); }
+.nav .btn { padding: 0.6rem 1rem; font-size: 0.88rem; color: var(--bg); }
+.nav .btn:hover { color: var(--ink); }
+.menu { display: none; position: relative; }
+.menu summary { list-style: none; cursor: pointer; font: 500 0.9rem/1 var(--f-body); padding: 0.6rem 0.9rem; border: 1px solid var(--line); border-radius: 3px; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu[open] .menu-panel { display: grid; }
+.menu-panel {
+  display: none; position: absolute; right: 0; top: calc(100% + 8px); min-width: 220px; gap: 0.25rem;
+  background: var(--card); border: 1px solid var(--line); padding: 0.75rem; border-radius: 4px;
+  box-shadow: 0 12px 30px oklch(0.2 0.03 158 / 0.15);
+}
+.menu-panel a { color: var(--ink); text-decoration: none; padding: 0.55rem 0.5rem; }
+@media (max-width: 960px) { .nav { display: none; } .menu { display: block; } }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; color: var(--on-image); overflow: hidden; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, oklch(0.2 0.03 158 / 0.35) 0%, var(--scrim) 55%, oklch(0.16 0.025 158 / 0.92) 100%); }
+.hero .wrap { position: relative; z-index: 1; padding-block: clamp(5rem, 13vw, 9.5rem) clamp(2.5rem, 5vw, 3.5rem); }
+.hero .eyebrow { color: oklch(0.86 0.05 145); }
+.hero h1 { font-size: var(--s5); max-width: 15ch; margin-top: 1.4rem; }
+.hero h1 em { font-style: italic; color: oklch(0.86 0.08 85); }
+.hero .lede { color: oklch(0.93 0.01 85); margin-top: 1.5rem; max-width: 36rem; }
+.hero .btns { margin-top: 2rem; }
+.ledger {
+  margin-top: clamp(2.5rem, 6vw, 4rem); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid oklch(0.98 0.005 85 / 0.3);
+}
+.ledger div { padding: 1.1rem 1rem 0 0; display: grid; gap: 0.3rem; min-width: 0; }
+.ledger div + div { padding-left: 1rem; border-left: 1px solid oklch(0.98 0.005 85 / 0.18); }
+.ledger b { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1; }
+.ledger span { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.04em; color: oklch(0.86 0.03 120); }
+@media (max-width: 680px) {
+  .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ledger div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .ledger div:nth-child(n+3) { padding-top: 1.1rem; }
+}
+
+/* ---------- Why now ---------- */
+.split { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); }
+.split > * { min-width: 0; }
+.gap-figure { grid-column: span 5; display: grid; gap: 1.2rem; align-content: start; }
+.gap-figure .big { font-family: var(--f-display); font-size: clamp(3.4rem, 9vw, 6.4rem); line-height: 0.92; letter-spacing: -0.03em; color: var(--ink); }
+.gap-figure .big small { display: block; font-size: 0.32em; letter-spacing: 0; color: var(--ink-soft); margin-top: 0.6rem; font-family: var(--f-mono); }
+.pressures { grid-column: span 7; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.pressure { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem; padding-block: 1.4rem; border-bottom: 1px solid var(--line); }
+.pressure h3 { font-size: var(--s1); }
+.pressure p { color: var(--ink-soft); }
+.answer { grid-column: 1 / -1; margin-top: clamp(1rem, 3vw, 2rem); font-family: var(--f-display); font-size: var(--s3); line-height: 1.2; max-width: 30ch; }
+.answer em { color: var(--link); }
+@media (max-width: 860px) { .gap-figure, .pressures { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .pressure { grid-template-columns: 1fr; gap: 0.4rem; } }
+
+/* ---------- Tree ---------- */
+.tree { background: var(--surface); }
+.tree-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.tree-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; position: sticky; top: 90px; }
+.tree-photos figure { margin: 0; }
+.tree-photos figure:first-child { grid-column: 1 / -1; }
+.tree-photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+.tree-photos figure:first-child img { aspect-ratio: 4 / 5; }
+figcaption { font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink-soft); margin-top: 0.5rem; line-height: 1.45; }
+.traits { margin-top: 2.2rem; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.trait { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1.25rem; padding-block: 1.25rem; border-bottom: 1px solid var(--line); }
+.trait dt { font-family: var(--f-mono); font-size: 0.82rem; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; padding-top: 0.2rem; }
+.trait dd { margin: 0; }
+.trait dd strong { font-family: var(--f-display); font-weight: 500; font-size: var(--s1); display: block; margin-bottom: 0.3rem; color: var(--ink); }
+.trait dd span { color: var(--ink-soft); }
+@media (max-width: 860px) {
+  .tree-grid { grid-template-columns: 1fr; }
+  .tree-photos { position: static; order: 2; }
+}
+@media (max-width: 520px) { .trait { grid-template-columns: 1fr; gap: 0.35rem; } }
+
+/* ---------- Cycle / timeline ---------- */
+.cycle-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: end; }
+@media (max-width: 860px) { .cycle-head { grid-template-columns: 1fr; } }
+.timeline-scroll { overflow-x: auto; margin-top: 3rem; padding-bottom: 0.5rem; }
+.timeline { min-width: 760px; display: grid; grid-template-columns: 9.5rem repeat(13, minmax(0, 1fr)); row-gap: 0.55rem; font-size: 0.85rem; }
+.timeline .yr { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-soft); text-align: center; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.timeline .yr.now { color: var(--accent); font-weight: 500; }
+.timeline .lab { grid-column: 1; font-weight: 500; padding-right: 0.75rem; align-self: center; }
+.timeline .bar { height: 1.9rem; border-radius: 2px; display: flex; align-items: center; padding-inline: 0.6rem; font-family: var(--f-mono); font-size: 0.72rem; white-space: nowrap; overflow: hidden; }
+.bar.prep { background: color-mix(in oklab, var(--accent) 22%, var(--bg)); border: 1px dashed var(--accent); color: var(--ink); }
+.bar.plant { background: var(--link); color: var(--bg); }
+.bar.grow { background: color-mix(in oklab, var(--link) 22%, var(--bg)); color: var(--ink); }
+.bar.harvest { background: var(--ink); color: var(--bg); }
+.bar.regrow { background: repeating-linear-gradient(90deg, color-mix(in oklab, var(--link) 30%, var(--bg)) 0 10px, transparent 10px 14px); color: var(--ink); }
+.timeline-note { font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink-soft); margin-top: 0.9rem; }
+.steps { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.steps li { background: var(--bg); padding: 1.4rem 1.3rem 1.5rem; display: grid; gap: 0.45rem; align-content: start; }
+.steps .n { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 0.5rem; }
+.steps .now-pill { font-family: var(--f-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; background: var(--accent); color: oklch(0.2 0.03 158); padding: 0.15rem 0.45rem; border-radius: 99px; }
+.steps h3 { font-size: var(--s1); }
+.steps p { color: var(--ink-soft); font-size: 0.95rem; }
+.steps li.current { background: var(--card); box-shadow: inset 0 3px 0 var(--accent); }
+
+/* ---------- Paths ---------- */
+.paths { background: var(--surface); }
+.path-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.path { background: var(--card); border: 1px solid var(--line); display: grid; grid-template-rows: auto 1fr; border-radius: 3px; overflow: hidden; }
+.path img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.path .body { padding: 1.4rem 1.4rem 1.6rem; display: grid; gap: 0.75rem; align-content: start; }
+.path .who { font-family: var(--f-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+.path h3 { font-size: var(--s2); }
+.path p { color: var(--ink-soft); font-size: 0.97rem; }
+.path a.more { font-weight: 500; text-decoration: none; margin-top: 0.4rem; }
+.path a.more:hover { text-decoration: underline; }
+.path.primary { border-color: var(--ink); }
+@media (max-width: 900px) { .path-grid { grid-template-columns: 1fr; } .path { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); grid-template-rows: auto; } .path img { height: 100%; aspect-ratio: auto; } }
+@media (max-width: 560px) { .path { grid-template-columns: 1fr; } .path img { aspect-ratio: 16 / 9; } }
+
+/* ---------- Evidence ---------- */
+.figs { margin-top: 3rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+.fig { padding: 1.5rem 1.25rem 1.5rem 0; display: grid; gap: 0.6rem; align-content: start; min-width: 0; }
+.fig + .fig { padding-left: 1.25rem; border-left: 1px solid var(--line); }
+.fig b { font-family: var(--f-display); font-weight: 500; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; }
+.fig .unit { font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink-soft); letter-spacing: 0.03em; }
+.fig p { color: var(--ink-soft); font-size: 0.92rem; }
+@media (max-width: 860px) { .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); } .fig:nth-child(3) { padding-left: 0; border-left: 0; } .fig:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 480px) { .figs { grid-template-columns: 1fr; } .fig + .fig { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } }
+.partners { margin-top: 3.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.partner { border-top: 1px solid var(--line); padding-top: 1.2rem; display: grid; gap: 0.4rem; align-content: start; }
+.partner h3 { font-size: var(--s1); }
+.partner .where { font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink-soft); }
+.partner p { color: var(--ink-soft); font-size: 0.95rem; }
+@media (max-width: 860px) { .partners { grid-template-columns: 1fr; } }
+.standing { margin-top: 3rem; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.5rem; align-items: center; padding: 1.6rem 1.8rem; border: 1px dashed var(--accent); border-radius: 3px; background: color-mix(in oklab, var(--accent) 7%, var(--bg)); }
+.standing svg { color: var(--accent); }
+.standing h3 { font-size: var(--s1); margin-bottom: 0.35rem; }
+.standing p { color: var(--ink-soft); }
+@media (max-width: 560px) { .standing { grid-template-columns: 1fr; } }
+
+/* ---------- Field note ---------- */
+.field { background: var(--band); color: var(--band-ink); position: relative; overflow: hidden; }
+.field .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.field .eyebrow { color: var(--band-soft); }
+.field .figure { font-family: var(--f-display); font-size: clamp(5rem, 15vw, 10rem); line-height: 0.85; letter-spacing: -0.04em; margin-top: 1rem; }
+.field .figure small { font-size: 0.32em; letter-spacing: 0; margin-left: 0.15em; }
+.field p.note { font-family: var(--f-display); font-size: var(--s2); line-height: 1.3; margin-top: 1.25rem; max-width: 26ch; }
+.field .side { display: grid; gap: 1rem; color: oklch(0.85 0.02 120); }
+.field .side p { color: var(--band-ink); opacity: 0.82; }
+.rings { position: absolute; right: -6rem; top: 50%; transform: translateY(-50%); width: 34rem; max-width: none; opacity: 0.12; pointer-events: none; color: var(--band-soft); }
+@media (max-width: 860px) { .field .wrap { grid-template-columns: 1fr; } .rings { width: 24rem; right: -8rem; } }
+
+/* ---------- Invest ---------- */
+.invest-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2.5rem; align-items: end; }
+.fund { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+.fund div { padding: 1rem 0.75rem 0 0; display: grid; gap: 0.3rem; min-width: 0; }
+.fund div + div { padding-left: 0.9rem; border-left: 1px solid var(--line); }
+.fund b { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.7rem, 3.4vw, 2.4rem); line-height: 1; }
+.fund span { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-soft); }
+@media (max-width: 860px) { .invest-head { grid-template-columns: 1fr; } }
+
+.money { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.money > * { min-width: 0; }
+.repaid { display: grid; gap: 1rem; }
+.repaid h3 { font-size: var(--s3); }
+.repaid p { color: var(--ink-soft); }
+.repaid ul { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.6rem; }
+.repaid li { display: grid; grid-template-columns: 1.1rem minmax(0, 1fr); gap: 0.6rem; color: var(--ink); }
+.repaid li::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--link); margin-top: 0.55rem; }
+@media (max-width: 900px) { .money { grid-template-columns: 1fr; } }
+
+.explorer { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: clamp(1.25rem, 3vw, 2rem); display: grid; gap: 1.5rem; }
+.explorer h3 { font-size: var(--s2); }
+.amount-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.amount-row label { font-weight: 500; }
+.amount-row output { font-family: var(--f-display); font-size: var(--s3); line-height: 1; font-variant-numeric: tabular-nums; }
+input[type="range"] {
+  width: 100%; appearance: none; -webkit-appearance: none; height: 6px; border-radius: 99px; margin: 0.4rem 0 0;
+  background: linear-gradient(90deg, var(--link) 0 var(--fill, 10%), var(--line) var(--fill, 10%) 100%); cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); border: 3px solid var(--card); box-shadow: 0 0 0 1px var(--ink); }
+input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--ink); border: 3px solid var(--card); box-shadow: 0 0 0 1px var(--ink); }
+.tiers { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tiers button { font: 500 0.88rem/1 var(--f-mono); padding: 0.55rem 0.8rem; border: 1px solid var(--line); background: transparent; color: var(--ink-soft); border-radius: 3px; cursor: pointer; }
+.tiers button:hover { border-color: var(--ink); color: var(--ink); }
+.tiers button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.panel { border: 1px solid var(--line); border-radius: 3px; padding: 1.1rem 1.1rem 1.25rem; display: grid; gap: 0.35rem; align-content: start; min-width: 0; }
+.panel .k { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.panel .v { font-family: var(--f-display); font-size: clamp(1.7rem, 3.2vw, 2.2rem); line-height: 1.05; font-variant-numeric: tabular-nums; }
+.panel .s { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-soft); }
+.panel.climate { background: color-mix(in oklab, var(--link) 8%, var(--card)); }
+.panel hr { border: 0; border-top: 1px solid var(--line); margin: 0.6rem 0; width: 100%; }
+.fine { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.55; }
+@media (max-width: 560px) { .panels { grid-template-columns: 1fr; } }
+
+.basecase { margin-top: 3.5rem; padding: 1.6rem 0; border-block: 1px solid var(--line); display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; }
+.basecase h3 { font-size: var(--s1); }
+.basecase p { color: var(--ink-soft); max-width: 46rem; }
+@media (max-width: 640px) { .basecase { grid-template-columns: 1fr; gap: 0.5rem; } }
+
+.risks { margin-top: 3.5rem; }
+.risk-grid { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.risk { background: var(--bg); padding: 1.3rem 1.3rem 1.4rem; display: grid; gap: 0.5rem; align-content: start; }
+.risk h4 { font-size: 1.15rem; }
+.risk .threat { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+.risk p { color: var(--ink-soft); font-size: 0.93rem; }
+@media (max-width: 900px) { .risk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .risk-grid { grid-template-columns: 1fr; } }
+
+.structure { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2.5rem; }
+.structure dl { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; }
+.structure dt { font-family: var(--f-display); font-size: 1.15rem; margin-bottom: 0.3rem; }
+.structure dd { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+@media (max-width: 860px) { .structure { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .structure dl { grid-template-columns: 1fr; } }
+
+.disclosure { margin-top: 3.5rem; border: 1.5px solid var(--ink); border-radius: 3px; padding: 1.4rem 1.6rem; display: grid; gap: 0.5rem; background: var(--card); }
+.disclosure .k { font-family: var(--f-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+.disclosure p { font-size: 0.95rem; color: var(--ink); }
+
+/* ---------- Impact ---------- */
+.impact { background: var(--surface); }
+.chain { margin-top: 3rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); background: var(--card); border-radius: 3px; }
+.link-step { padding: 1.4rem 1.3rem; display: grid; gap: 0.45rem; align-content: start; position: relative; min-width: 0; }
+.link-step + .link-step { border-left: 1px solid var(--line); }
+.link-step + .link-step::before { content: "→"; position: absolute; left: -0.7rem; top: 1.4rem; width: 1.4rem; height: 1.4rem; display: grid; place-items: center; background: var(--card); color: var(--accent); font-family: var(--f-mono); font-size: 0.85rem; }
+.link-step .op { font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink-soft); }
+.link-step b { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.05; font-variant-numeric: tabular-nums; }
+.link-step p { color: var(--ink-soft); font-size: 0.9rem; }
+.link-step.result { background: var(--ink); color: var(--bg); border-radius: 0 3px 3px 0; }
+.link-step.result .op, .link-step.result p { color: color-mix(in oklab, var(--bg) 78%, var(--ink)); }
+.link-step.result::before { background: var(--ink); color: var(--bg); }
+@media (max-width: 860px) {
+  .chain { grid-template-columns: 1fr 1fr; }
+  .link-step:nth-child(3) { border-left: 0; }
+  .link-step:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .link-step:nth-child(3)::before { display: none; }
+  .link-step.result { border-radius: 0 0 3px 0; }
+}
+@media (max-width: 480px) {
+  .chain { grid-template-columns: 1fr; }
+  .link-step + .link-step { border-left: 0; border-top: 1px solid var(--line); }
+  .link-step + .link-step::before { display: none; }
+  .link-step.result { border-radius: 0 0 3px 3px; }
+}
+.impact-cols { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.impact-cols img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+.soil-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.soil-list div { padding-block: 1.1rem; border-bottom: 1px solid var(--line); display: grid; gap: 0.3rem; }
+.soil-list h3 { font-size: var(--s1); }
+.soil-list p { color: var(--ink-soft); font-size: 0.97rem; }
+@media (max-width: 860px) { .impact-cols { grid-template-columns: 1fr; } }
+
+/* ---------- Team ---------- */
+.team-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem; }
+.person { display: grid; gap: 0.5rem; align-content: start; }
+.person img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; border-radius: 2px; filter: saturate(0.9); }
+.person .role { font-family: var(--f-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-top: 0.4rem; }
+.person h3 { font-size: 1.2rem; }
+.person p { color: var(--ink-soft); font-size: 0.88rem; line-height: 1.5; }
+@media (max-width: 1060px) { .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .team-grid { grid-template-columns: 1fr; } }
+
+/* ---------- FAQ ---------- */
+.faq-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2.5rem; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary { cursor: pointer; list-style: none; padding: 1.15rem 2.5rem 1.15rem 0; position: relative; font-family: var(--f-display); font-size: 1.2rem; line-height: 1.3; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; position: absolute; right: 0.25rem; top: 1.05rem; font-family: var(--f-mono); font-size: 1.2rem; color: var(--accent); transition: transform .2s; }
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+.faq-list details p { color: var(--ink-soft); padding-bottom: 1.3rem; max-width: 44rem; }
+@media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Contact ---------- */
+.contact { background: var(--band); color: var(--band-ink); }
+.contact .eyebrow { color: var(--band-soft); }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.contact h2 { font-size: var(--s4); margin-top: 1rem; }
+.contact .lede { color: color-mix(in oklab, var(--band-ink) 80%, var(--band)); margin-top: 1.25rem; }
+.card-contact { border: 1px solid var(--band-line); border-radius: 4px; padding: 1.5rem; display: grid; gap: 1.1rem; }
+.card-contact .who { display: flex; gap: 1rem; align-items: center; }
+.card-contact .who img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center 20%; }
+.card-contact .who b { font-family: var(--f-display); font-weight: 500; font-size: 1.2rem; display: block; }
+.card-contact .who span { font-size: 0.88rem; color: var(--band-soft); }
+.line-item { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: 0.75rem; align-items: center; padding-top: 1rem; border-top: 1px solid var(--band-line); }
+.line-item .k { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--band-soft); }
+.line-item .v { font-family: var(--f-mono); font-size: 0.98rem; user-select: all; overflow-wrap: anywhere; }
+.copy { font: 500 0.78rem/1 var(--f-mono); padding: 0.5rem 0.7rem; border-radius: 3px; border: 1px solid var(--band-line); background: transparent; color: var(--band-ink); cursor: pointer; }
+.copy:hover { border-color: var(--band-soft); }
+.card-contact .fine { color: color-mix(in oklab, var(--band-ink) 72%, var(--band)); }
+
+/* ---------- Footer ---------- */
+.foot { padding-block: 3.5rem 2.5rem; border-top: 1px solid var(--line); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2.5rem; }
+.foot .legal { display: grid; gap: 0.75rem; font-size: 0.9rem; color: var(--ink-soft); align-content: start; }
+.sources h2 { font-family: var(--f-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; color: var(--ink-soft); }
+.sources ol { margin: 1rem 0 0; padding-left: 1.6rem; display: grid; gap: 0.5rem; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
+.sources li::marker { font-family: var(--f-mono); color: var(--accent); }
+.sources li:target { background: color-mix(in oklab, var(--accent) 16%, transparent); }
+.foot-risk { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--ink-soft); line-height: 1.55; max-width: 70rem; }
+@media (max-width: 860px) { .foot-grid { grid-template-columns: 1fr; } }
+
+.sec-head { display: grid; gap: 1rem; max-width: 46rem; }
+.sec-head h2 { font-size: var(--s4); }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="ForestsForFuture, back to top">
+      <svg width="22" height="27" viewBox="0.29 7.41 126.71 154.73" fill="currentColor" aria-hidden="true"><g transform="translate(0,200) scale(0.1,-0.1)"><path fill-rule="evenodd" d="M1124 1920 c-5 -5 -88 -12 -186 -15 -97 -4 -200 -13 -229 -20 -29 -8 -55 -12 -59 -10 -3 2 -26 -1 -51 -7 -67 -16 -116 -11 -172 18 l-52 25 -18 -23 c-10 -13 -40 -48 -66 -78 -62 -71 -87 -111 -162 -262 -70 -138 -96 -178 -117 -178 -11 0 -12 -3 -3 -13 6 -8 18 -47 28 -88 15 -66 22 -80 72 -132 31 -32 84 -79 119 -103 59 -42 68 -44 108 -38 24 3 47 10 50 15 3 5 14 9 26 9 16 0 18 -3 9 -14 -8 -10 -10 -37 -5 -88 6 -72 6 -74 -45 -188 -29 -63 -61 -131 -73 -150 -11 -19 -33 -69 -49 -110 -24 -61 -27 -77 -16 -87 11 -11 16 -3 31 44 10 32 44 112 75 178 32 66 66 143 76 170 27 73 34 79 59 57 51 -45 161 -106 228 -127 l73 -22 19 24 c29 39 76 63 95 51 13 -8 33 -2 86 27 111 61 295 210 295 239 0 7 -11 48 -25 91 -20 61 -25 94 -23 163 1 75 -3 161 -17 312 -7 72 -26 198 -35 231 -6 19 -10 48 -10 65 0 32 -20 50 -36 34z"/></g></svg>
+      ForestsForFuture
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#why-now">Why now</a>
+      <a href="#paulownia">Paulownia</a>
+      <a href="#cycle">How it works</a>
+      <a href="#financing">Financing</a>
+      <a href="#impact">Impact</a>
+      <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <div class="menu-panel">
+        <a href="#why-now">Why now</a>
+        <a href="#paulownia">Paulownia</a>
+        <a href="#cycle">How it works</a>
+        <a href="#financing">Financing</a>
+        <a href="#impact">Impact</a>
+        <a href="#team">Team</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Get in touch</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <img src="img/plantation.jpg" alt="Rows of young Paulownia trees on a plantation under a blue sky" width="1600" height="900">
+    <div class="wrap">
+      <p class="eyebrow">Project Central Spain · planting targeted for 2028</p>
+      <h1 id="hero-title">Europe needs more wood. <em>We grow it on farmland.</em></h1>
+      <p class="lede">ForestsForFuture is developing a 100-hectare Paulownia plantation on irrigated land south-west of Madrid. The timber is sold in Europe and the trees store CO₂ while they grow.</p>
+      <div class="btns">
+        <a class="btn light" href="#contact">Get in touch</a>
+        <a class="btn light ghost" href="#cycle">See how a plantation works</a>
+      </div>
+      <div class="ledger" role="list">
+        <div role="listitem"><b>100 ha</b><span>planned plantation</span></div>
+        <div role="listitem"><b>~10 yrs</b><span>cycle to main harvest</span></div>
+        <div role="listitem"><b>€100,000</b><span>minimum participation</span></div>
+        <div role="listitem"><b>~30 t</b><span>CO₂ per ha per year, estimate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOW -->
+  <section class="section" id="why-now" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Why now</p>
+        <h2 id="why-title">Europe uses more wood than its forests can supply.</h2>
+      </div>
+      <div class="split" style="margin-top: 3rem">
+        <div class="gap-figure">
+          <p class="big">117 million m³<small>projected wood shortfall in Europe by 2040<sup><a href="#src-1">1</a></sup></small></p>
+          <p class="prose">If demand for bioenergy grows strongly, the gap widens to 190 million m³. Southern Europe feels it first: there, wood availability is expected to drop below industrial demand within this decade.<sup><a href="#src-1">1</a>,<a href="#src-2">2</a></sup></p>
+        </div>
+        <div class="pressures">
+          <div class="pressure">
+            <h3>Imports are closing</h3>
+            <p>The EU has banned wood from Russia and Belarus since 2022.<sup><a href="#src-3">3</a></sup> Since November 2025, hardwood plywood from China carries an 86.8% anti-dumping duty.<sup><a href="#src-4">4</a></sup></p>
+          </div>
+          <div class="pressure">
+            <h3>Origin has to be proven</h3>
+            <p>From 30 December 2026, large and medium-sized companies may only sell wood in the EU if it is deforestation-free and traceable to the plot where it grew.<sup><a href="#src-5">5</a></sup></p>
+          </div>
+          <div class="pressure">
+            <h3>Natural forests are stretched</h3>
+            <p>Illegal logging also happens inside the EU. In 2020 the European Commission started infringement proceedings against Romania over it.<sup><a href="#src-6">6</a></sup></p>
+          </div>
+        </div>
+        <p class="answer">Our answer: grow timber on European farmland and document it from the day it is planted, <em>so natural forests don't have to supply it.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAULOWNIA -->
+  <section class="section tree" id="paulownia" aria-labelledby="tree-title">
+    <div class="wrap tree-grid">
+      <div class="tree-photos">
+        <figure>
+          <img src="img/paulownia-trunk.jpg" alt="Looking up the straight trunk of a Paulownia tree into its leafy canopy" loading="lazy" width="1200" height="1600">
+        </figure>
+      </div>
+      <div>
+        <div class="sec-head">
+          <p class="eyebrow">The tree</p>
+          <h2 id="tree-title">Paulownia: a timber tree you can harvest within a decade.</h2>
+          <p class="lede">Most European timber species need several decades to reach a useful size. Paulownia gets there in six to ten years, and the wood is light, stable and easy to work. In the trade it is called the aluminium of timber.</p>
+        </div>
+        <dl class="traits">
+          <div class="trait">
+            <dt>Growth</dt>
+            <dd><strong>First harvest after 6 to 8 years</strong><span>With good genetics, irrigation and the right site. The main harvest follows in years 9 and 10.</span></dd>
+          </div>
+          <div class="trait">
+            <dt>Regrowth</dt>
+            <dd><strong>One planting, many harvests</strong><span>After felling, the tree sprouts again from the same root system and grows back faster. Later cycles can run 3 to 4 years when the wood goes into modular building elements.</span></dd>
+          </div>
+          <div class="trait">
+            <dt>Material</dt>
+            <dd><strong>Light, strong and stable</strong><span>Used for modular construction, insulation, saunas, furniture, interior panels, surfboards and boats. Our own team designs and builds with it.</span></dd>
+          </div>
+          <div class="trait">
+            <dt>Fire</dt>
+            <dd><strong>Thick bark, little resin</strong><span>Laboratory research found that Paulownia wood has notably good flame retardancy.<sup><a href="#src-7">7</a></sup> We still plant with firebreaks and insure the plantation.</span></dd>
+          </div>
+          <div class="trait">
+            <dt>Soil</dt>
+            <dd><strong>Feeds the ground it stands on</strong><span>The large leaves fall in autumn and turn into humus quickly. In a Polish field study, soil microbial activity rose measurably within a year of planting.<sup><a href="#src-8">8</a></sup></span></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- CYCLE -->
+  <section class="section" id="cycle" aria-labelledby="cycle-title">
+    <div class="wrap">
+      <div class="cycle-head">
+        <div class="sec-head">
+          <p class="eyebrow">How it works</p>
+          <h2 id="cycle-title">From choosing the land to the main harvest.</h2>
+        </div>
+        <p class="lede">We only buy land once water, soil and legal status have been checked and the capital is committed. That takes longer, and it is how you end up with a good plantation. Below is the plan, including where we are today.</p>
+      </div>
+
+      <div class="timeline-scroll" role="region" aria-label="Project timeline 2026 to 2038" tabindex="0">
+        <div class="timeline">
+          <span></span>
+          <span class="yr now">2026</span><span class="yr">27</span><span class="yr">28</span><span class="yr">29</span><span class="yr">30</span><span class="yr">31</span><span class="yr">32</span><span class="yr">33</span><span class="yr">34</span><span class="yr">35</span><span class="yr">36</span><span class="yr">37</span><span class="yr">38</span>
+
+          <span class="lab">Prepare</span>
+          <span class="bar prep" style="grid-column: 2 / 4">select · check · buy</span>
+          <span class="lab" style="grid-row: 3">Plant</span>
+          <span class="bar plant" style="grid-column: 4 / 5; grid-row: 3">2028</span>
+          <span class="lab" style="grid-row: 4">Grow</span>
+          <span class="bar grow" style="grid-column: 4 / 10; grid-row: 4">growing & measuring CO₂</span>
+          <span class="lab" style="grid-row: 5">First harvest</span>
+          <span class="bar harvest" style="grid-column: 10 / 13; grid-row: 5">years 6–8</span>
+          <span class="lab" style="grid-row: 6">Main harvest</span>
+          <span class="bar harvest" style="grid-column: 13 / 15; grid-row: 6">years 9–10</span>
+          <span class="lab" style="grid-row: 7">Regrowth</span>
+          <span class="bar regrow" style="grid-column: 10 / 15; grid-row: 7">next cycles from the same roots →</span>
+        </div>
+      </div>
+      <p class="timeline-note">Calendar years are counted from the targeted planting in 2028 and will shift if planting moves.</p>
+
+      <ol class="steps">
+        <li class="current">
+          <span class="n">01 <span class="now-pill">We are here</span></span>
+          <h3>Land selection</h3>
+          <p>With ProAg Invest we assess plots in central Spain and talk to landowners whose land meets our criteria.</p>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <h3>Due diligence</h3>
+          <p>Soil analysis, water rights and the legal status of each plot are checked before any purchase.</p>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <h3>Acquisition</h3>
+          <p>The land is bought, not leased, once the capital is committed, so no lease can end halfway through a cycle.</p>
+        </li>
+        <li>
+          <span class="n">04</span>
+          <h3>Planting</h3>
+          <p>825 trees per hectare, planted with our cultivation partner using proven protocols and genetics.</p>
+        </li>
+        <li>
+          <span class="n">05</span>
+          <h3>Harvest &amp; sale</h3>
+          <p>Timber is sold to European buyers, with the first harvest after 6 to 8 years and the main harvest in years 9 to 10.</p>
+        </li>
+        <li>
+          <span class="n">06</span>
+          <h3>Regrowth</h3>
+          <p>The plantation sprouts again from its own roots and keeps producing timber for 50 years or more.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PATHS -->
+  <section class="section paths" id="paths" aria-labelledby="paths-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Who we work with</p>
+        <h2 id="paths-title">Three ways to be part of the plantation.</h2>
+      </div>
+      <div class="path-grid">
+        <article class="path primary">
+          <img src="img/paulownia-leaves.jpg" alt="Large heart-shaped leaves of a young Paulownia tree in evening light" loading="lazy" width="1200" height="1600">
+          <div class="body">
+            <span class="who">Investors</span>
+            <h3>Talk to us about taking part</h3>
+            <p>Participation starts at €100,000. We explain the project, the set-up and the risks personally, with no obligation.</p>
+            <a class="more" href="#contact">Get in touch →</a>
+          </div>
+        </article>
+        <article class="path">
+          <img src="img/spanish-farmland.jpg" alt="Open farmland with olive trees in central Spain" loading="lazy" width="1600" height="1200">
+          <div class="body">
+            <span class="who">Landowners in central Spain</span>
+            <h3>Sell irrigated farmland</h3>
+            <p>We buy land south-west of Madrid with secured water rights, well-draining soil and access for machinery. If your plot fits, we would like to hear from you.</p>
+            <a class="more" href="#contact">Get in touch →</a>
+          </div>
+        </article>
+        <article class="path">
+          <img src="img/timber-boards.jpg" alt="Close-up of Paulownia timber boards" loading="lazy" width="1600" height="1600">
+          <div class="body">
+            <span class="who">Builders &amp; makers</span>
+            <h3>Source traceable European timber</h3>
+            <p>Our team already makes tiny houses, saunas and modular elements from Paulownia. Builders and manufacturers can talk to us now about future supply.</p>
+            <a class="more" href="#contact">Get in touch →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVIDENCE -->
+  <section class="section" id="evidence" aria-labelledby="evidence-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">What the figures rest on</p>
+        <h2 id="evidence-title">Every number comes with its source.</h2>
+        <p class="lede">We use published research and our own cost figures, and we say which is which. Once the trees are in the ground, measured data from our own plots replaces the estimates.</p>
+      </div>
+      <div class="figs">
+        <div class="fig">
+          <b>~30 t</b>
+          <span class="unit">CO₂ / hectare / year</span>
+          <p>Working estimate. Based on 16 t of dry matter per hectare per year from Stichting Probos, converted with the IPCC method, plus roots.<sup><a href="#src-9">9</a>,<a href="#src-10">10</a></sup></p>
+        </div>
+        <div class="fig">
+          <b>€187</b>
+          <span class="unit">climate damage / tonne CO₂</span>
+          <p>The cost to society of one tonne of CO₂ emitted in 2025, according to PBL, the Dutch government's independent assessment agency.<sup><a href="#src-11">11</a></sup></p>
+        </div>
+        <div class="fig">
+          <b>825</b>
+          <span class="unit">trees / hectare</span>
+          <p>Planting density for Project Central Spain, following our cultivation partner's protocol.</p>
+        </div>
+        <div class="fig">
+          <b>€20,000</b>
+          <span class="unit">per hectare planted</span>
+          <p>Plants and maintains about one hectare. The land itself is bought separately.</p>
+        </div>
+      </div>
+
+      <div class="partners">
+        <div class="partner">
+          <h3>ProAg Invest</h3>
+          <span class="where">Central Spain · land &amp; operations</span>
+          <p>Spanish agroforestry and investment partner with a network among local landowners. Supports land selection and on-site operations.</p>
+        </div>
+        <div class="partner">
+          <h3>Oncra · Climate Cleanup</h3>
+          <span class="where">Amsterdam · CO₂ certification</span>
+          <p>Independent non-profit with an open accounting framework for natural carbon removal, based on measured data. Members of our team have certified projects with them before.</p>
+        </div>
+        <div class="partner">
+          <h3>Cultivation partner</h3>
+          <span class="where">Central Spain · planting &amp; harvest</span>
+          <p>An established European Paulownia grower already producing at scale in the same region. We will name them once the agreement is signed.</p>
+        </div>
+      </div>
+
+      <div class="standing">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="28" cy="28" r="26"/><circle cx="28" cy="28" r="20"/><circle cx="28" cy="28" r="14.5"/><circle cx="28" cy="28" r="9.5"/><circle cx="28" cy="28" r="5"/><circle cx="28" cy="28" r="1.6" fill="currentColor"/></svg>
+        <div>
+          <h3>Where we stand today</h3>
+          <p>No land has been bought and nothing has been planted yet. We are open about that. As soon as there is something to measure, we publish growth, carbon storage and certification results here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELD NOTE -->
+  <section class="section field" aria-labelledby="field-title">
+    <svg class="rings" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="200" cy="200" r="196"/><circle cx="202" cy="198" r="172"/><circle cx="203" cy="199" r="150"/><circle cx="201" cy="201" r="126"/><circle cx="200" cy="200" r="100"/><circle cx="199" cy="201" r="76"/><circle cx="200" cy="199" r="52"/><circle cx="200" cy="200" r="28"/><circle cx="200" cy="200" r="6" fill="currentColor"/>
+    </svg>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" id="field-title">From the field · central Spain</p>
+        <p class="figure">7.5<small>m</small></p>
+        <p class="note">of trunk growth per shoot in a single season, measured on an existing plantation in the region two years after felling.</p>
+      </div>
+      <div class="side">
+        <p>We picked central Spain because Paulownia already grows well there at scale. Nearby plantations share our climate and soils, so we can build on growth that has already been seen in the field.</p>
+        <p>Dr. Jaklien Leemans, the biologist on our team, is running a registered long-term field study into carbon storage and biodiversity on Paulownia plots. We report what we measure.</p>
+        <p class="mono" style="font-size: .8rem; color: var(--band-soft)">Interested parties can visit the region with us on request.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCING -->
+  <section class="section" id="financing" aria-labelledby="financing-title">
+    <div class="wrap">
+      <div class="invest-head">
+        <div class="sec-head">
+          <p class="eyebrow">Financing</p>
+          <h2 id="financing-title">100 hectares of productive forest in central Spain.</h2>
+          <p class="lede">We are preparing the financing for the first plantation: half bank financing and half capital from investors, with a minimum participation of €100,000. Land and trees form the asset; timber sales are the main source of income.</p>
+        </div>
+        <div class="fund">
+          <div><b>€5m</b><span>project budget</span></div>
+          <div><b>€2.5m</b><span>bank financing</span></div>
+          <div><b>€2.5m</b><span>investor capital</span></div>
+        </div>
+      </div>
+
+      <div class="money">
+        <div class="repaid">
+          <p class="eyebrow">Interested in taking part?</p>
+          <h3>We explain the terms in person.</h3>
+          <p>Participation starts at €100,000. The financial terms, the structure and the risks are not set out on this website. We go through them personally and in writing with parties who get in touch, with no obligation.</p>
+          <ul>
+            <li>Plantation visits on request</li>
+            <li>Periodic reports from the field and the books</li>
+            <li>A direct line to the founders</li>
+          </ul>
+          <p><a href="#contact">Get in touch</a></p>
+        </div>
+
+        <div class="explorer" aria-labelledby="explorer-title">
+          <div>
+            <p class="eyebrow">Work it out</p>
+            <h3 id="explorer-title" style="margin-top: .6rem">The climate impact of your participation.</h3>
+          </div>
+          <div>
+            <div class="amount-row">
+              <label for="amount">Amount (illustration)</label>
+              <output id="amount-out" for="amount">€100,000</output>
+            </div>
+            <input id="amount" type="range" min="100000" max="500000" step="25000" value="100000" aria-describedby="explorer-fine">
+          </div>
+          <div class="tiers" role="group" aria-label="Quick amounts">
+            <button type="button" data-v="100000">€100k</button>
+            <button type="button" data-v="150000">€150k</button>
+            <button type="button" data-v="250000">€250k</button>
+            <button type="button" data-v="500000">€500k</button>
+          </div>
+          <div class="panels" style="grid-template-columns: minmax(0, 1fr)">
+            <div class="panel climate">
+              <span class="k">Climate · per year</span>
+              <span class="v" id="out-co2">≈ 150 t CO₂</span>
+              <span class="s" id="out-ha">≈ 5 ha of Paulownia</span>
+              <hr>
+              <span class="s" id="out-damage">≈ €28,000 climate damage avoided</span>
+            </div>
+          </div>
+          <p class="fine" id="explorer-fine">Illustration only. Climate figures use €20,000 per planted hectare, the ~30 t CO₂ working estimate and PBL's €187 per tonne. Avoided climate damage shows the scale of the impact; it is not income and not a return.</p>
+        </div>
+      </div>
+
+      <div class="basecase">
+        <h3>The base case</h3>
+        <p>Our planning is based on timber sold at today's prices. Income from carbon credits, a rise in land value or higher timber prices caused by the shortage would be extra. None of these are assumed.</p>
+      </div>
+
+      <div class="risks">
+        <div class="sec-head">
+          <p class="eyebrow">How we manage risk</p>
+          <h2 style="font-size: var(--s3)">The risks, and what we do about each one.</h2>
+        </div>
+        <div class="risk-grid">
+          <div class="risk"><span class="threat">Wrong land</span><h4>Buy only after analysis</h4><p>The biggest risk comes before planting. We buy only when soil and water results are in and the plot meets all six of our criteria.</p></div>
+          <div class="risk"><span class="threat">Drought</span><h4>Secured water rights</h4><p>We only invest in irrigated land with water rights in place, which matters in the Iberian climate.</p></div>
+          <div class="risk"><span class="threat">Fire</span><h4>Firebreaks and insurance</h4><p>Paulownia has thick bark and little resin. We add firebreaks to the layout and insure the plantation.</p></div>
+          <div class="risk"><span class="threat">Timber price</span><h4>Conservative prices</h4><p>We do not count on prices rising from the shortage, and we sell through several channels instead of one.</p></div>
+          <div class="risk"><span class="threat">Cultivation</span><h4>Proven partner</h4><p>Planting and harvest are done by a grower already producing at scale in the same region, with tested protocols and genetics.</p></div>
+          <div class="risk"><span class="threat">Carbon market</span><h4>Not in the base case</h4><p>Carbon credits are left out of our base case. If they come in, it is extra income.</p></div>
+        </div>
+      </div>
+
+      <div class="structure">
+        <div class="sec-head">
+          <p class="eyebrow">Intended structure</p>
+          <h2 style="font-size: var(--s3)">How the asset is secured.</h2>
+          <p class="fine">The final legal structure is set with legal and tax advisers before the first purchase. This is our starting point.</p>
+        </div>
+        <dl>
+          <div><dt>The land</dt><dd>Bought and owned by the project entity. Land, water and harvesting rights are recorded by notarial deed.</dd></div>
+          <div><dt>The trees</dt><dd>Recorded as a separate asset, so timber and carbon revenue can be attributed to the project.</dd></div>
+          <div><dt>The partners</dt><dd>Written agreements with the cultivation partner and with ProAg Invest for on-site support.</dd></div>
+          <div><dt>The company</dt><dd>Dutch holding Co2Cirkel B.V. with a local project company in Spain, with management and reporting in one hand.</dd></div>
+        </dl>
+      </div>
+
+      <div class="disclosure" role="note" aria-label="Risk disclosure">
+        <span class="k">Risk disclosure</span>
+        <p>ForestsForFuture is a project in development. Land for the first plantation is currently being selected and has not yet been acquired. This website is for general information only. It does not constitute an offer, advice or invitation to invest under the Dutch Financial Supervision Act (Wft), and no returns are promised or implied. Any participation requires a minimum of €100,000 per participant and is only possible on the basis of written documentation provided separately. Investing in a plantation project carries risk: you may lose part or all of the money you put in. Consider consulting an independent adviser before you decide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="section impact" id="impact" aria-labelledby="impact-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Impact</p>
+        <h2 id="impact-title">What one hectare does in a year.</h2>
+        <p class="lede">How we get from a published growth figure to the climate value of one hectare, step by step.</p>
+      </div>
+      <div class="chain">
+        <div class="link-step">
+          <span class="op">Probos, 2021</span>
+          <b>16 t</b>
+          <p>dry matter per hectare per year, a preliminary estimate from European trials.<sup><a href="#src-9">9</a></sup></p>
+        </div>
+        <div class="link-step">
+          <span class="op">× 0.47 × 44/12</span>
+          <b>27.6 t CO₂</b>
+          <p>carbon share of wood, converted to CO₂ with the IPCC 2006 method.<sup><a href="#src-10">10</a></sup></p>
+        </div>
+        <div class="link-step">
+          <span class="op">+ roots</span>
+          <b>~30 t CO₂</b>
+          <p>our working estimate, to be replaced by measurements on our own plots.</p>
+        </div>
+        <div class="link-step result">
+          <span class="op">× €187 per tonne</span>
+          <b>≈ €5,610</b>
+          <p>climate damage avoided per hectare per year, at PBL's 2025 value.<sup><a href="#src-11">11</a></sup></p>
+        </div>
+      </div>
+      <p class="fine" style="margin-top: 1rem; max-width: 52rem">Probos made its estimate for Dutch conditions. Central Spain has a longer, warmer growing season and our plots will be irrigated, so we expect faster growth there. Certification will be done by Oncra on the basis of measured data.</p>
+
+      <div class="impact-cols">
+        <img src="img/plantation-walk.jpg" alt="A person standing between rows of tall Paulownia trees" loading="lazy" width="900" height="1600" style="object-position: center 70%">
+        <div>
+          <h3 style="font-size: var(--s2); margin-bottom: 1.25rem">More than carbon.</h3>
+          <div class="soil-list">
+            <div><h3>Cooler, moister soil</h3><p>The broad canopy shades the ground and limits evaporation, which counts in the Iberian summer.</p></div>
+            <div><h3>Less erosion</h3><p>A dense root system holds the soil in place during heavy rain.</p></div>
+            <div><h3>More life than a bare field</h3><p>Compared with intensively farmed arable land, a plantation gives shelter, shade and leaf litter that feeds the soil and what lives in it.</p></div>
+            <div><h3>Less pressure on natural forests</h3><p>Every cubic metre grown on farmland is one that does not have to be cut from a natural forest.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" id="team" aria-labelledby="team-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Who we are</p>
+        <h2 id="team-title">The people running the project, from planting to reporting.</h2>
+        <p class="lede">Entrepreneurs who have built and sold companies, together with hands-on experience in Paulownia, timber processing and research. You speak directly with them.</p>
+      </div>
+      <div class="team-grid">
+        <article class="person">
+          <img src="img/tycho-schellart.jpg" alt="Portrait of Tycho Schellart" loading="lazy">
+          <span class="role">CEO &amp; co-founder</span>
+          <h3>Tycho Schellart</h3>
+          <p>Mechanical engineer who built and sold a sustainable building-services company over sixteen years. Leads timber sales and applications, from tiny houses to saunas.</p>
+        </article>
+        <article class="person">
+          <img src="img/finn-verhoeff.jpg" alt="Portrait of Finn Verhoeff" loading="lazy">
+          <span class="role">Co-founder · CBO</span>
+          <h3>Finn Verhoeff</h3>
+          <p>Background in forest and nature management, four years in the Paulownia and carbon market. Manages partners, cultivation and financing, and is the first point of contact.</p>
+        </article>
+        <article class="person">
+          <img src="img/frank-goovaerts.jpg" alt="Portrait of Frank Goovaerts" loading="lazy">
+          <span class="role">Business growth</span>
+          <h3>Frank Goovaerts</h3>
+          <p>Physicist (TU Delft) with twenty years as an executive: private equity at HAL Investments, CEO of Imprima, COO of Sungevity, CEO of SenseGlove. Works part-time on scaling up.</p>
+        </article>
+        <article class="person">
+          <img src="img/jaklien-leemans.jpg" alt="Portrait of Dr. Jaklien Leemans" loading="lazy">
+          <span class="role">Science &amp; research</span>
+          <h3>Dr. Jaklien Leemans</h3>
+          <p>Biologist (Utrecht University) with a PhD in microbiology (University of Amsterdam) and 25+ years of research. Leads the field study on carbon, biodiversity and land use.</p>
+        </article>
+        <article class="person">
+          <img src="img/annabel-hart.jpg" alt="Portrait of Annabel Hart" loading="lazy">
+          <span class="role">Strategy &amp; operations</span>
+          <h3>Annabel Hart</h3>
+          <p>Master's in Strategic Entrepreneurship from Erasmus University Rotterdam. Sets the strategic priorities and keeps the team working towards them.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-title" style="padding-top: 0">
+    <div class="wrap faq-grid">
+      <div class="sec-head">
+        <p class="eyebrow">Questions</p>
+        <h2 id="faq-title" style="font-size: var(--s3)">Frequently asked questions.</h2>
+        <p class="fine">Missing something? <a href="#contact">Ask us directly.</a></p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Where does the project stand?</summary>
+          <p>We are selecting land. With ProAg Invest we assess plots in central Spain on water, soil, location and price. We buy after due diligence and once the capital is committed, and we aim to plant in 2028.</p>
+        </details>
+        <details>
+          <summary>What is the minimum participation?</summary>
+          <p>€100,000. Larger investors can ask about an equity stake in the company; we discuss that case by case.</p>
+        </details>
+        <details>
+          <summary>What are the financial terms?</summary>
+          <p>We do not publish returns or terms on this website. We go through the financial set-up, the assumptions and the risks personally and in writing with interested parties. Returns are never guaranteed, and you may lose part or all of the money you put in.</p>
+        </details>
+        <details>
+          <summary>How are the land and trees secured?</summary>
+          <p>The land is bought, not leased, and held by the project entity, with land, water and harvesting rights recorded by notarial deed. The trees are recorded as a separate asset. The final structure is set with legal and tax advisers before purchase.</p>
+        </details>
+        <details>
+          <summary>What happens if there is a fire?</summary>
+          <p>Paulownia resists fire well thanks to its thick bark and low resin content. The plantation is laid out with firebreaks and will be insured.</p>
+        </details>
+        <details>
+          <summary>How do the carbon credits work?</summary>
+          <p>Oncra, the open non-profit framework of the Climate Cleanup Foundation, certifies the stored CO₂ on the basis of measured data. Because the carbon market moves a lot, credits are left out of the base case.</p>
+        </details>
+        <details>
+          <summary>Will I get regular reports?</summary>
+          <p>Yes. Participants receive periodic updates on progress, finances and material risks. Frequency and format are set out in the written documentation.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2 id="contact-title">Talk to the people who run the project.</h2>
+        <p class="lede">Landowner, timber buyer, or interested in taking part from €100,000: we explain the project, the set-up and the risks personally, with no obligation.</p>
+      </div>
+      <div class="card-contact">
+        <div class="who">
+          <img src="img/finn-verhoeff.jpg" alt="" loading="lazy">
+          <div><b>Finn Verhoeff</b><span>Co-founder · first point of contact</span></div>
+        </div>
+        <div class="line-item">
+          <span class="k">Email</span>
+          <span class="v" id="c-mail">info@co2cirkel.eu</span>
+          <button class="copy" type="button" data-copy="c-mail">Copy</button>
+        </div>
+        <div class="line-item">
+          <span class="k">Phone</span>
+          <span class="v" id="c-tel">+31 6 23 94 22 85</span>
+          <button class="copy" type="button" data-copy="c-tel">Copy</button>
+        </div>
+        <p class="fine">We usually reply within two working days. Visits to the region can be arranged on request.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="legal">
+        <a class="brand" href="#top">
+          <svg width="18" height="22" viewBox="0.29 7.41 126.71 154.73" fill="currentColor" aria-hidden="true"><g transform="translate(0,200) scale(0.1,-0.1)"><path fill-rule="evenodd" d="M1124 1920 c-5 -5 -88 -12 -186 -15 -97 -4 -200 -13 -229 -20 -29 -8 -55 -12 -59 -10 -3 2 -26 -1 -51 -7 -67 -16 -116 -11 -172 18 l-52 25 -18 -23 c-10 -13 -40 -48 -66 -78 -62 -71 -87 -111 -162 -262 -70 -138 -96 -178 -117 -178 -11 0 -12 -3 -3 -13 6 -8 18 -47 28 -88 15 -66 22 -80 72 -132 31 -32 84 -79 119 -103 59 -42 68 -44 108 -38 24 3 47 10 50 15 3 5 14 9 26 9 16 0 18 -3 9 -14 -8 -10 -10 -37 -5 -88 6 -72 6 -74 -45 -188 -29 -63 -61 -131 -73 -150 -11 -19 -33 -69 -49 -110 -24 -61 -27 -77 -16 -87 11 -11 16 -3 31 44 10 32 44 112 75 178 32 66 66 143 76 170 27 73 34 79 59 57 51 -45 161 -106 228 -127 l73 -22 19 24 c29 39 76 63 95 51 13 -8 33 -2 86 27 111 61 295 210 295 239 0 7 -11 48 -25 91 -20 61 -25 94 -23 163 1 75 -3 161 -17 312 -7 72 -26 198 -35 231 -6 19 -10 48 -10 65 0 32 -20 50 -36 34z"/></g></svg>
+          ForestsForFuture
+        </a>
+        <p>ForestsForFuture is a brand of Co2Cirkel B.V.<br>Fraterstraat 1, 5041 DL Tilburg, the Netherlands<br>Chamber of Commerce (KvK) 98156101</p>
+        <p class="mono" style="font-size: .78rem">© 2026 Co2Cirkel B.V.</p>
+      </div>
+      <div class="sources">
+        <h2>Sources</h2>
+        <ol>
+          <li id="src-1">European Panel Federation (2025). <a href="https://europanels.org/wp-content/uploads/2025/06/EPF-Strategic-Wood-Availability.pdf" target="_blank" rel="noopener noreferrer">Report on strategic wood availability (PDF)</a>.</li>
+          <li id="src-2">Lerink et al. (2023). <a href="https://doi.org/10.1093/forestry/cpad009" target="_blank" rel="noopener noreferrer">Forestry, doi:10.1093/forestry/cpad009</a>.</li>
+          <li id="src-3">Council Regulation (EU) <a href="https://eur-lex.europa.eu/eli/reg/2014/833/oj" target="_blank" rel="noopener noreferrer">No 833/2014</a>, as amended by Regulation (EU) 2022/576; Council Regulation (EC) <a href="https://eur-lex.europa.eu/eli/reg/2006/765/oj" target="_blank" rel="noopener noreferrer">No 765/2006</a>, as amended by Regulation (EU) 2022/355.</li>
+          <li id="src-4">Commission Implementing Regulation <a href="https://eur-lex.europa.eu/eli/reg_impl/2025/2333/oj" target="_blank" rel="noopener noreferrer">(EU) 2025/2333</a>, anti-dumping duty on hardwood plywood from China, in force 21 November 2025.</li>
+          <li id="src-5">EU Deforestation Regulation, <a href="https://eur-lex.europa.eu/eli/reg/2023/1115/oj" target="_blank" rel="noopener noreferrer">Regulation (EU) 2023/1115</a>, as amended by Regulation (EU) 2025/2650.</li>
+          <li id="src-6">European Commission, infringement procedure INFR(2020)2033 against Romania (letter of formal notice February 2020, reasoned opinion July 2020).</li>
+          <li id="src-7">Li &amp; Oda (2007). <a href="https://doi.org/10.1007/s10853-007-1781-9" target="_blank" rel="noopener noreferrer">Journal of Materials Science, doi:10.1007/s10853-007-1781-9</a>.</li>
+          <li id="src-8">Woźniak, M., Gałązka, A., Siebielec, G. &amp; Frąc, M. (2022). <a href="https://doi.org/10.3390/agriculture12020128" target="_blank" rel="noopener noreferrer">Can the biological activity of abandoned soils be changed by the growth of Paulownia elongata × Paulownia fortunei?</a> Agriculture 12(2): 128.</li>
+          <li id="src-9">Stichting Probos (2021). <a href="https://www.probos.nl/publicaties/rapporten/rapporten-2021/1720-paulowniateelt-in-nederland" target="_blank" rel="noopener noreferrer">Paulowniateelt in Nederland</a>, for the province of Gelderland, §4.2 p. 24 and table 4.1 p. 25.</li>
+          <li id="src-10">IPCC (2006). <a href="https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol4.html" target="_blank" rel="noopener noreferrer">2006 Guidelines for National Greenhouse Gas Inventories, Vol. 4</a>: Agriculture, Forestry and Other Land Use.</li>
+          <li id="src-11">PBL Netherlands Environmental Assessment Agency (2026). <a href="https://www.pbl.nl/publicaties/klimaatverandering-in-de-prijzen-in-2025" target="_blank" rel="noopener noreferrer">Klimaatverandering in de prijzen in 2025</a>.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="foot-risk">ForestsForFuture is a project in development. Land for the first plantation is currently being selected and has not yet been acquired. This website is for general information only and does not constitute an offer, advice or invitation to invest under the Dutch Financial Supervision Act (Wft). No returns are promised or implied; participation requires a minimum of €100,000 per participant, and you may lose part or all of the money you put in.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var COST_HA = 20000, CO2_HA = 30, PRICE_T = 187;
+  var MIN = 100000, MAX = 500000;
+  var eur = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  var num = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 0 });
+  var one = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 1 });
+  var r100 = function (n) { return Math.round(n / 100) * 100; };
+
+  var range = document.getElementById("amount");
+  var out = document.getElementById("amount-out");
+  var tiers = document.querySelectorAll(".tiers button");
+
+  function render(v) {
+    var ha = v / COST_HA;
+    var co2 = ha * CO2_HA;
+    var damage = co2 * PRICE_T;
+    out.textContent = eur.format(v);
+    range.style.setProperty("--fill", ((v - MIN) / (MAX - MIN) * 100) + "%");
+    document.getElementById("out-co2").textContent = "≈ " + num.format(co2) + " t CO₂";
+    document.getElementById("out-ha").textContent = "≈ " + one.format(ha) + " ha of Paulownia";
+    document.getElementById("out-damage").textContent = "≈ " + eur.format(r100(damage)) + " climate damage avoided";
+    tiers.forEach(function (b) { b.setAttribute("aria-pressed", Number(b.dataset.v) === v ? "true" : "false"); });
+  }
+  range.addEventListener("input", function () { render(Number(range.value)); });
+  tiers.forEach(function (b) {
+    b.addEventListener("click", function () { range.value = b.dataset.v; render(Number(b.dataset.v)); });
+  });
+  render(Number(range.value));
+
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(btn.dataset.copy);
+      var text = el.textContent.trim();
+      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+      var fallback = function () {
+        var sel = window.getSelection(); var r = document.createRange();
+        r.selectNodeContents(el); sel.removeAllRanges(); sel.addRange(r);
+        btn.textContent = "Selected";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1600);
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+        else fallback();
+      } catch (e) { fallback(); }
+    });
+  });
+
+  document.querySelectorAll(".menu-panel a").forEach(function (a) {
+    a.addEventListener("click", function () { a.closest("details").removeAttribute("open"); });
+  });
+})();
+</script>
+
+</body></html>
